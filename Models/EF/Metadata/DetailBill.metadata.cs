@@ -1,12 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
-namespace Model.EF.Metadata
+namespace Model.EF
 {
-    class DetailBill
+
+    [MetadataTypeAttribute(typeof(DetailBill))]
+    public partial class DetailBill
     {
+        internal sealed class DetailBillMetadata
+        {
+
+        }
     }
 }
+
