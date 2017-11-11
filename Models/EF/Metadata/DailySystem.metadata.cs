@@ -15,9 +15,4 @@ namespace Model.EF
 }
 
 
-namespace Model.EF.Metadata
-{
-    class DailySystem
-    {
-    }
-}
+

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OnlineShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="OnlineShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bill">
           <Key>
             <PropertyRef Name="idBill" />
@@ -17,6 +17,7 @@
           <Property Name="totalMoney" Type="decimal" Precision="18" Scale="0" />
           <Property Name="finishDate" Type="datetime" />
           <Property Name="promotionCustomer" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="feeShip" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Blog">
           <Key>
@@ -93,6 +94,7 @@
           <Property Name="address" Type="text" />
           <Property Name="coin" Type="int" />
           <Property Name="phone" Type="nchar" MaxLength="30" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="DailySystem">
           <Key>
@@ -195,6 +197,7 @@
           <Property Name="description" Type="text" />
           <Property Name="phone" Type="nchar" MaxLength="20" />
           <Property Name="codeTax" Type="nchar" MaxLength="20" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -529,8 +532,7 @@
             <End Role="subComment" EntitySet="subComment" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OnlineShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -549,6 +551,7 @@
           <NavigationProperty Name="Customer" Relationship="Self.FK_Bill_Customer" FromRole="Bill" ToRole="Customer" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Bill_Employee" FromRole="Bill" ToRole="Employee" />
           <NavigationProperty Name="DetailBills" Relationship="Self.FK_DetailBill_Bill" FromRole="Bill" ToRole="DetailBill" />
+          <Property Name="feeShip" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Blog">
           <Key>
@@ -635,6 +638,7 @@
           <Property Name="coin" Type="Int32" />
           <Property Name="phone" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Bills" Relationship="Self.FK_Bill_Customer" FromRole="Customer" ToRole="Bill" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DailySystem">
           <Key>
@@ -758,6 +762,7 @@
           <Property Name="codeTax" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="BuyProducts" Relationship="Self.FK_BuyProduct_Supplier" FromRole="Supplier" ToRole="BuyProduct" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Product_Supplier" FromRole="Supplier" ToRole="Product" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1111,6 +1116,7 @@
           <EntitySetMapping Name="Bills">
             <EntityTypeMapping TypeName="OnlineShopModel.Bill">
               <MappingFragment StoreEntitySet="Bill">
+                <ScalarProperty Name="feeShip" ColumnName="feeShip" />
                 <ScalarProperty Name="idBill" ColumnName="idBill" />
                 <ScalarProperty Name="createDate" ColumnName="createDate" />
                 <ScalarProperty Name="status" ColumnName="status" />
@@ -1188,6 +1194,7 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="OnlineShopModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="idCustomer" ColumnName="idCustomer" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
@@ -1305,6 +1312,7 @@
           <EntitySetMapping Name="Suppliers">
             <EntityTypeMapping TypeName="OnlineShopModel.Supplier">
               <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="idSupplier" ColumnName="idSupplier" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="location" ColumnName="location" />

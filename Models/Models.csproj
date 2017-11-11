@@ -48,15 +48,97 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EF\Bill.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Blog.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\BuyProduct.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Category.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Comment.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Control.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ControlRole.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Customer.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\DailySystem.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\DetailBill.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\DetailBuy.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Employee.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Metadata\Bill.metadata.cs" />
+    <Compile Include="EF\Metadata\Blog.metadata.cs" />
+    <Compile Include="EF\Metadata\BuyProduct.metadata.cs" />
+    <Compile Include="EF\Metadata\Category.metadata.cs" />
+    <Compile Include="EF\Metadata\Comment.metadata.cs" />
+    <Compile Include="EF\Metadata\Control.metadata.cs" />
+    <Compile Include="EF\Metadata\ControlRole.metadata.cs" />
+    <Compile Include="EF\Metadata\Customer.metadata.cs" />
+    <Compile Include="EF\Metadata\DailySystem.metadata.cs" />
+    <Compile Include="EF\Metadata\DetailBill.metadata.cs" />
+    <Compile Include="EF\Metadata\DetailBuy.metadata.cs" />
+    <Compile Include="EF\Metadata\Employee.metadata.cs" />
+    <Compile Include="EF\Metadata\Product.metadata.cs" />
+    <Compile Include="EF\Metadata\Role.metadata.cs" />
+    <Compile Include="EF\Metadata\Salary.metadata.cs" />
+    <Compile Include="EF\Metadata\SubComment.metadata.cs" />
+    <Compile Include="EF\Metadata\Supplier.metadata.cs" />
     <Compile Include="EF\OnlineShop.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>OnlineShop.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF\OnlineShop.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
     <Compile Include="EF\OnlineShop.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>OnlineShop.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Product.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Role.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Salary.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sp_helpdiagrams_Result.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\subComment.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Supplier.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sysdiagram.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -77,6 +159,12 @@
     <Content Include="EF\OnlineShop.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>OnlineShop.Context.cs</LastGenOutput>
+      <DependentUpon>OnlineShop.edmx</DependentUpon>
+    </Content>
+    <Content Include="EF\OnlineShop.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OnlineShop.edmx</DependentUpon>
+      <LastGenOutput>OnlineShop.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -84,7 +172,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dao\" />
-    <Folder Include="EF\Metadata\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

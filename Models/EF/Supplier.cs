@@ -26,6 +26,7 @@ namespace Models.EF
         public string description { get; set; }
         public string phone { get; set; }
         public string codeTax { get; set; }
+        public string email { get; set; }
     
         public virtual ICollection<BuyProduct> BuyProducts { get; set; }
         public virtual ICollection<Product> Products { get; set; }

@@ -27,6 +27,7 @@ namespace Models.EF
         public Nullable<decimal> totalMoney { get; set; }
         public Nullable<System.DateTime> finishDate { get; set; }
         public Nullable<decimal> promotionCustomer { get; set; }
+        public Nullable<decimal> feeShip { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Employee Employee { get; set; }
