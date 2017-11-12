@@ -26,6 +26,43 @@ namespace ElectronicShop
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/admin/css").Include(
+                      "~/Content/Admin/vendor/bootstrap/css/bootstrap.min.css",
+                      "~/Content/Admin/vendor/font-awesome/css/font-awesome.min.css",
+                      "~/Content/Admin/vendor/datatables/dataTables.bootstrap4.css",
+                      "~/Content/Admin/css/sb-admin.css"));
+
+            bundles.Add(new ScriptBundle("~/Content/admin/js").Include(
+                "~/Content/Admin/vendor/jquery/jquery.min.js",
+                "~/Content/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js",
+                "~/Content/Admin/vendor/jquery-easing/jquery.easing.min.js",
+                "~/Content/Admin/vendor/chart.js/Chart.min.js",
+                "~/Content/Admin/vendor/datatables/jquery.dataTables.js",
+                "~/Content/Admin/vendor/datatables/dataTables.bootstrap4.js",
+                "~/Content/Admin/js/sb-admin.min.js",
+                "~/Content/Admin/js/sb-admin-datatables.min.js",
+                "~/Content/Admin/js/sb-admin-charts.min.js"));
+
+
+            bundles.Add(new ScriptBundle("~/Content/frontPage/css").Include(
+                "~/Content/FrontPage/css/bootstrap.min.css",
+                "~/Content/FrontPage/css/font-awesome.min.css",
+                "~/Content/FrontPage/css/prettyPhoto.css",
+                "~/Content/FrontPage/css/price-range.css",
+                "~/Content/FrontPage/css/animate.css",
+                "~/Content/FrontPage/css/main.css",
+                "~/Content/FrontPage/css/responsive.css" ));
+
+            bundles.Add(new ScriptBundle("~/Content/frontPage/js").Include(
+                "~/Content/FrontPage/js/jquery.js",
+                "~/Content/FrontPage/js/bootstrap.min.js",
+                "~/Content/FrontPage/js/jquery.scrollUp.min.js",
+                "~/Content/FrontPage/js/price-range.js",
+                "~/Content/FrontPage/js/jquery.prettyPhoto.js",
+                "~/Content/FrontPage/js/main.js",
+                "~/Content/FrontPage/js/price-range.js"
+                ));
         }
     }
 }
