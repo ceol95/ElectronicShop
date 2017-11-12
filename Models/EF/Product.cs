@@ -33,11 +33,13 @@ namespace Models.EF
         public Nullable<int> idCategory { get; set; }
         public Nullable<int> wanranty { get; set; }
         public Nullable<int> idSupplier { get; set; }
+        public Nullable<int> idBrand { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<DetailBill> DetailBills { get; set; }
         public virtual ICollection<DetailBuy> DetailBuys { get; set; }
         public virtual Supplier Supplier { get; set; }
+        public virtual Brand Brand { get; set; }
     }
 }

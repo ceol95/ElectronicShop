@@ -40,6 +40,8 @@
         <AssociationConnector Association="OnlineShopModel.FK_Employee_Role" ManuallyRouted="false" />
         <AssociationConnector Association="OnlineShopModel.FK_Salary_Employee" ManuallyRouted="false" />
         <AssociationConnector Association="OnlineShopModel.FK_Product_Supplier" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="OnlineShopModel.Brand" Width="1.5" PointX="0.75" PointY="9.875" />
+        <AssociationConnector Association="OnlineShopModel.FK_Product_Brand" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

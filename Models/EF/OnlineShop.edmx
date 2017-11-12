@@ -30,6 +30,14 @@
           <Property Name="date" Type="datetime" />
           <Property Name="idWritter" Type="int" />
         </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="idBrand" />
+          </Key>
+          <Property Name="idBrand" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="description" Type="nvarchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="BuyProduct">
           <Key>
             <PropertyRef Name="idBuy" />
@@ -157,6 +165,7 @@
           <Property Name="idCategory" Type="int" />
           <Property Name="wanranty" Type="int" />
           <Property Name="idSupplier" Type="int" />
+          <Property Name="idBrand" Type="int" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -365,6 +374,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Product_Brand">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="idBrand" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="idBrand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Product_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
@@ -447,6 +468,7 @@
         <EntityContainer Name="OnlineShopModelStoreContainer">
           <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BuyProduct" EntityType="Self.BuyProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
@@ -514,6 +536,10 @@
           <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Brand" Association="Self.FK_Product_Brand">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Product" EntitySet="Product" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
             <End Role="Category" EntitySet="Category" />
@@ -716,6 +742,8 @@
           <NavigationProperty Name="DetailBills" Relationship="Self.FK_DetailBill_Product" FromRole="Product" ToRole="DetailBill" />
           <NavigationProperty Name="DetailBuys" Relationship="Self.FK_DetailBuy_Product" FromRole="Product" ToRole="DetailBuy" />
           <NavigationProperty Name="Supplier" Relationship="Self.FK_Product_Supplier" FromRole="Product" ToRole="Supplier" />
+          <Property Name="idBrand" Type="Int32" />
+          <NavigationProperty Name="Brand" Relationship="OnlineShopModel.FK_Product_Brand" FromRole="Product" ToRole="Brand" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -1095,6 +1123,11 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Brands" EntityType="OnlineShopModel.Brand" />
+          <AssociationSet Name="FK_Product_Brand" Association="OnlineShopModel.FK_Product_Brand">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1107,6 +1140,27 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="idBrand" />
+          </Key>
+          <Property Name="idBrand" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="OnlineShopModel.FK_Product_Brand" FromRole="Brand" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Product_Brand">
+          <End Type="OnlineShopModel.Brand" Role="Brand" Multiplicity="0..1" />
+          <End Type="OnlineShopModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="idBrand" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="idBrand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1262,6 +1316,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="OnlineShopModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="idBrand" ColumnName="idBrand" />
                 <ScalarProperty Name="idProduct" ColumnName="idProduct" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="code" ColumnName="code" />
@@ -1357,6 +1412,15 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="OnlineShopModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="OnlineShopModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="OnlineShopModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="idBrand" ColumnName="idBrand" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

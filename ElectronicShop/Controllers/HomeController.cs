@@ -26,5 +26,41 @@ namespace ElectronicShop.Controllers
 
             return View();
         }
+
+        [ChildActionOnly]
+        public ActionResult Slide()
+        {
+            return PartialView("_slide");
+        }
+
+        [ChildActionOnly]
+        public ActionResult Brand()
+        {
+            return PartialView("_brand");
+        }
+
+        [ChildActionOnly]
+        public ActionResult Category()
+        {
+            return PartialView("_category");
+        }
+
+        [ChildActionOnly]
+        public ActionResult CategoryTab()
+        {
+            return PartialView("_categoryTab");
+        }
+
+        [ChildActionOnly]
+        public ActionResult New()
+        {
+            return PartialView("_new");
+        }
+
+        [ChildActionOnly]
+        public ActionResult Recommended()
+        {
+            return PartialView("_recommended");
+        }
     }
 }

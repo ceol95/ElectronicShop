@@ -54,6 +54,9 @@
     <Compile Include="EF\Blog.cs">
       <DependentUpon>OnlineShop.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF\Brand.cs">
+      <DependentUpon>OnlineShop.tt</DependentUpon>
+    </Compile>
     <Compile Include="EF\BuyProduct.cs">
       <DependentUpon>OnlineShop.tt</DependentUpon>
     </Compile>
@@ -86,6 +89,7 @@
     </Compile>
     <Compile Include="EF\Metadata\Bill.metadata.cs" />
     <Compile Include="EF\Metadata\Blog.metadata.cs" />
+    <Compile Include="EF\Metadata\Brand.metadata.cs" />
     <Compile Include="EF\Metadata\BuyProduct.metadata.cs" />
     <Compile Include="EF\Metadata\Category.metadata.cs" />
     <Compile Include="EF\Metadata\Comment.metadata.cs" />
